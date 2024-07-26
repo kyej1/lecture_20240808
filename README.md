@@ -36,17 +36,48 @@
 4. Server단 구성 + 회원가입 중간까지 진행
 
 # 7월25일(목) 과제
-1. Server단 끝낼께요.
-  -. 핵심알고리즘만 추출
-  -. 데이타를 입력하는 화면 제작
-  -. 사용자 입력데이타를 서버에서 수신모듈 제작
-  -. 몽고DB Atlas 클라우드로 전송
-  -. 전송결과를 클라우드에서 확인함
-  -. 처리결과를 클라이어트 화면에서 표시함
-  -. 신규회원과, 중복여부를 체크까지 성공함
+1. Server단 끝냈음.
+  - 핵심알고리즘만 추출
+  - 데이타를 입력하는 화면 제작
+  - 사용자 입력데이타를 서버에서 수신모듈 제작
+  - 몽고DB Atlas 클라우드로 전송
+  - 전송결과를 클라우드에서 확인함 (1인 3명씩 회원가입)
+  - 처리결과를 클라이어트 화면에서 표시함 (성공메시지 표시)
+  - 신규회원과, 중복여부를 체크까지 성공함 (이미 있는 회원입니다. 메시지 표시)
 
 # 7월26일(금) 과제
-1. async / await 약간의 실습(20분정도)
+1. 어제 참석못한 친구 Fork
+  https://github.com/bundang-highschool/lecture_20240726.git
 1. 카카오톡 클라이언트 진행
+  - NPX(Node Package eXecute) : 설치 + 실행개념
+  - 리액트 설치
+    - npx create-react-app client
+    - cd client / npm start
+  - tailwindcss 설치 (https://tailwindcss.com/docs/installation 매뉴얼 참조)
+    - npm install -D tailwindcss
+    - npx tailwindcss init
+    - tailwind.config.js 파일안에 "./src/**/*.{html,js}" 넣기
+    - src/input.css 맨위에 코드 삽입
+  - React Router 설치
+    - npm install react-router-dom
+  - vscode 확장팩 설치
+    - Tailwind CSS IntelliSense
+    - ES7 React/Redux/React-Native snippets
+      - rafce 자동완성
+1. async / await 약간의 실습(20분정도)
 
+# 8월5일(월) 과제
+1. 카카오클라이언트 완성
+  - 회원가입 서버 api 호출
+  - 아이디(계정) 로그인 -> 비밀번호 로그인
+  - 개인사진 프로필 등록
+  - 기본적 Chat (대화기능)
+
+# 8월6일(화) 과제
+1. 카카오클라이언트 완성
+  - Chat 대화기능 완성
+
+# 2막 수업
+# 8월7일(수) 과제
+1. LLM - ChatGPT ~
 
