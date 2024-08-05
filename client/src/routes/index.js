@@ -19,11 +19,11 @@ const router = createBrowserRouter([
         },
         {
             path: 'email',
-            element: <CheckEmailPage/>
+            element: <AuthLayouts><CheckEmailPage/></AuthLayouts>
         },
         {
             path: 'password',
-            element: <CheckPasswordPage/>
+            element: <AuthLayouts><CheckPasswordPage/></AuthLayouts>
         },
         {
             path: "",
