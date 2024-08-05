@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { IoChatbubbleEllipses } from 'react-icons/io5'
 import { FaUserPlus } from 'react-icons/fa'
 import { BiLogOut } from 'react-icons/bi'
+import { FiArrowUpLeft } from 'react-icons/fi'
 
 const Sidebar = () => {
   return (
@@ -27,8 +28,21 @@ const Sidebar = () => {
                 </button>
             </div>
         </div>
-        <div>
-            친구목록뿌려주기
+
+        {/* 이 영역은 친구목록을 표시합니다. */}
+        <div className='w-full'>
+            <div className='h-16 flex items-center'>
+                <h2 className='text-xl font-bold p-4 text-slate-800'>Message</h2>
+            </div>
+            <div className='bg-slate-200 p-[0.5px]'></div>
+            <div className='h-[colc(100vh-65px)] overflow-x-hidden overflow-y-auto scrollbar'>
+                <div className='mt-12'>
+                    <div className='flex justify-center items-center my-4 text-slate-500'>
+                        <FiArrowUpLeft size={50}/>
+                    </div>
+                    <p className='text-lg text-center text-slate-400'>대화를 시작할 사용자를 탐색하세요.</p>
+                </div>
+            </div>
         </div>
     </div>
   )
