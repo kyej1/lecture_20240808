@@ -1,15 +1,22 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import { IoMdSend } from 'react-icons/io'
-import { FaPlus } from 'react-icons/fa6'
+import { FaAngleLeft, FaPlus } from 'react-icons/fa6'
+import backgroundImage from '../assets/wallapaper.jpeg'
 
 const MessagePage = () => {
     return(
-        <div style={{}}>
-            <header>
+        <div style={{ backgroundImage : `url(${backgroundImage})`}} className='bg-no-repeat bg-cover'>
+            <header className='sticky top-0 h-16 bg-white flex justify-between items-center px-4'>
+                <div>
+                    <Link>
+                        <FaAngleLeft size={25}/>
+                    </Link>
+                </div>
             </header>
 
             {/* 모든 메세지 표시 */}
-            <section>
+            <section className='h-[calc(100vh-128px)] overflow-x-hidden overflow-y-scroll scrollbar relative bg-slate-200 gb-opacity-50'>
                 <div className='flex flex-col gap-2 py-2 mx-2'>
                     <div className={`p-1 py-1 rounded w-fit max-w-[280px] md:max-w-sm lg:max-w-md bg-white`}>
                         <p className='px-2'>방학때 강의 열심히 듣기 바랍니다.</p>
