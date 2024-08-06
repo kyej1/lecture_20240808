@@ -3,15 +3,25 @@ import { Link } from 'react-router-dom'
 import { IoMdSend } from 'react-icons/io'
 import { FaAngleLeft, FaPlus } from 'react-icons/fa6'
 import backgroundImage from '../assets/wallapaper.jpeg'
+import Avatar from "./Avatar";
 
 const MessagePage = () => {
     return(
         <div style={{ backgroundImage : `url(${backgroundImage})`}} className='bg-no-repeat bg-cover'>
             <header className='sticky top-0 h-16 bg-white flex justify-between items-center px-4'>
-                <div>
+                <div className='flex items-center gap-4'>
                     <Link>
                         <FaAngleLeft size={25}/>
                     </Link>
+                    <div>
+                        <Avatar
+                            userId=''
+                            name='신달수'
+                            imageUrl=''
+                            width={50}
+                            height={50}
+                        />
+                    </div>
                 </div>
             </header>
 
@@ -36,7 +46,7 @@ const MessagePage = () => {
                         <FaPlus size={20}/>
                     </button>
                 </div>
-                <form>
+                <form className='h-full w-full flex gap-2'>
                     <input type='text' placeholder="메세지를 입력하세요..." className='py-1 px-4 outline-none w-full h-full'/>
                     <button className='text-primary hover:text-secondary'>
                         <IoMdSend size={28}/>

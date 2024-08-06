@@ -4,6 +4,7 @@ import { IoChatbubbleEllipses } from 'react-icons/io5'
 import { FaUserPlus } from 'react-icons/fa'
 import { BiLogOut } from 'react-icons/bi'
 import { FiArrowUpLeft } from 'react-icons/fi'
+import Avatar from './Avatar'
 
 const Sidebar = () => {
   return (
@@ -19,7 +20,13 @@ const Sidebar = () => {
             </div>
             <div className='flex flex-col items-center'>
                 <button className='mx-auto'>
-                    신
+                    <Avatar
+                        userId=''
+                        name='신달수'
+                        imageUrl=''
+                        width={40}
+                        height={40}
+                    />
                 </button>
                 <button>
                     <span>
