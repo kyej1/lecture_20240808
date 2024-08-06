@@ -1,11 +1,18 @@
 const express = require('express')
+const cors = require('cors')
 const router = require('./router/index.js')
 require('dotenv').config({ path: '.env' })
 const connectDB = require('./config/connectDB.js')
 
 const app = express()
 
+console.log(`URL:${process.env.FRONTEND_URL}`)
+
 // middleware
+app.use(cors({
+    origin : process.env.FRONTEND_URL,
+    credentials : true
+}))
 app.use(express.json())
 app.use('/api',router)
 app.set("view engine", "ejs") //화면 엔진을 ejs로 설정한다. (기본폴더는 /views이다)

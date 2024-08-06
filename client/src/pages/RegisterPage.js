@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { IoClose } from 'react-icons/io5'
 import uploadFile from '../helpers/uploadFile'
+import axios from 'axios'
 
 const RegisterPage = () => {
     {/* 자 로직을 넣어보자 */}
@@ -32,12 +33,25 @@ const RegisterPage = () => {
             }
         })
     }
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        const URL = `${process.env.REACT_APP_BACKEND_URL}/api/register`
+        console.log(`URL:${URL}`)
+        console.log(`data:${JSON.stringify(data)}`)
+        try {
+            const response = await axios.post(URL,data)
+            console.log(`response:${JSON.stringify(response)}`)
+        } catch(error){
+            console.log(`error:${JSON.stringify(error)}`)
+        }
+    }
 
     return(
         <div className='mt-5'>
             <div className='bg-white w-full max-w-sm mx-2 rounded overflow-hidden p-4 mx-auto'>
                 <h3>회원 가입 페이지</h3>
-                <form>
+                <form className='grid gap-4 mt-5' onSubmit={handleSubmit}>
                     <div className='flex flex-col gap-1'>
                         <label>성명 :</label>
                         <input
