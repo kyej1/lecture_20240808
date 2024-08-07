@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import { IoClose } from 'react-icons/io5'
 import uploadFile from '../helpers/uploadFile'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const RegisterPage = () => {
     {/* 자 로직을 넣어보자 */}
@@ -42,8 +43,10 @@ const RegisterPage = () => {
         try {
             const response = await axios.post(URL,data)
             console.log(`response:${JSON.stringify(response)}`)
+            toast.success(`와우 신규가입을 추카드립니다~~~람쥐`)
         } catch(error){
             console.log(`error:${JSON.stringify(error)}`)
+            toast.error(`신규가입할때 에러났어유ㅠㅠ`)
         }
     }
 

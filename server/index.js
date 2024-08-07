@@ -9,7 +9,7 @@ const app = express()
 console.log(`URL:${process.env.FRONTEND_URL}`)
 
 // middleware
-app.use(cors({
+app.use(cors({ //cors설정은 맨위에 존재해야함
     origin : process.env.FRONTEND_URL,
     credentials : true
 }))
