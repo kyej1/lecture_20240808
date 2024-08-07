@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import { useNavigate } from 'react-router-dom'
 import { IoClose } from 'react-icons/io5'
 import uploadFile from '../helpers/uploadFile'
 import axios from 'axios'
@@ -13,6 +14,7 @@ const RegisterPage = () => {
         profile_pic: ""
     })
     const [uploadPhoto,setUploadPhoto] = useState("")
+    const navigate = useNavigate()
     const handleOnChange = (e) => {
         const {name,value} = e.target
         setData((preve)=>{
@@ -43,10 +45,11 @@ const RegisterPage = () => {
         try {
             const response = await axios.post(URL,data)
             console.log(`response:${JSON.stringify(response)}`)
-            toast.success(`와우 신규가입을 추카드립니다~~~람쥐`)
+            toast.success(response.data.message)
+            navigate('/email')
         } catch(error){
             console.log(`error:${JSON.stringify(error)}`)
-            toast.error(`신규가입할때 에러났어유ㅠㅠ`)
+            toast.error(error.response.data.message || error.message)
         }
     }
 
