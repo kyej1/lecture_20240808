@@ -1,12 +1,30 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { IoChatbubbleEllipses } from 'react-icons/io5'
 import { FaUserPlus } from 'react-icons/fa'
 import { BiLogOut } from 'react-icons/bi'
 import { FiArrowUpLeft } from 'react-icons/fi'
 import Avatar from './Avatar'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../redux/userSlice'
+import axios from 'axios'
 
 const Sidebar = () => {
+  const user = useSelector(state=>state?.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogout = async() => {
+    const URL = `${process.env.REACT_APP_BACKEND_URL}/api/logout`
+    const response = await axios({
+      url: URL,
+      withCredentials: true
+    })
+    dispatch(logout())
+    navigate('/email')
+
+  }
+
   return (
     <div className='w-full h-full grid grid-cols-[48px,1fr] bg-white'>
         <div className='bg-slate-100 w-12 h-full rounded-tr-lg rounded-br-lg py-5 text-slate-600 flex flex-col justify-between'>
@@ -21,16 +39,16 @@ const Sidebar = () => {
             <div className='flex flex-col items-center'>
                 <button className='mx-auto'>
                     <Avatar
-                        userId=''
-                        name='신달수'
-                        imageUrl=''
+                        userId={user?._id}
+                        name={user?.name}
+                        imageUrl={user?.profile_pic}
                         width={40}
                         height={40}
                     />
                 </button>
-                <button>
-                    <span>
-                        <BiLogOut size={20}/>
+                <button className='w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' onClick={handleLogout}>
+                    <span className='ml-2'>
+                        <BiLogOut size={20}/ >
                     </span>
                 </button>
             </div>
