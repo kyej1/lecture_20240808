@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import logo from '../assets/kakaologo.png'
 import Sidebar from "../components/Sidebar";
+import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser, logout } from '../redux/userSlice'
-import axios from 'axios'
+import { setUser, logout, setOnlineUser, setSocketConnection } from '../redux/userSlice'
+import io from 'socket.io-client'
 
 const Home = () => {
     const navigate = useNavigate()
@@ -27,8 +28,8 @@ const Home = () => {
             //1. 리덕스에 쓰기
             dispatch(setUser(response.data.data))
 
-            //2. 쿠키에 토큰이 없을 때 로그인 페이지로 이동
-            if(response.data.data.logout){
+            //2. 쿠키에 토큰이 없을 때 로그인페이지로 이동
+            if (response.data.data.logout){
                 dispatch(logout())
                 navigate('/email')
             }
@@ -41,6 +42,23 @@ const Home = () => {
         fetchUserDetails()
     })
 
+    /**
+     * 소켓서버로 통신시작
+     */
+    useEffect(()=>{
+        const socketConnection = io(process.env.REACT_APP_BACKEND_URL,{
+            auth: {
+                token: localStorage.getItem('token')
+            }
+        })
+        socketConnection.on('onlineUser',(data)=>{
+            dispatch(setOnlineUser(data)) //접속한 사람들 저장
+        })
+        dispatch(setSocketConnection(socketConnection))
+        return () =>{
+            socketConnection.disconnect()
+        }
+    },[]) //두번째 인자값 []면 Home.js가 로드된 이후 최초 1번만 실행
 
     return(
         <div className='grid lg:grid-cols-[300px,1fr] h-screen max-h-screen'>

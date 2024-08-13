@@ -1,7 +1,12 @@
 import React from 'react'
 import {PiUserCircle} from 'react-icons/pi'
+import { useSelector } from 'react-redux'
+
 
 const Avatar = ({userId,name,imageUrl,width,height}) => {
+  const onlineUser = useSelector(state=>state?.user?.onlineUser)
+  const isOnline = onlineUser.includes(userId)  //접속자면 true, 비접속자면 false
+
   let avatarName = ""
   if (name) {
     const splitName = name?.split(" ")
@@ -22,7 +27,7 @@ const Avatar = ({userId,name,imageUrl,width,height}) => {
               src={imageUrl}
               width={width}
               height={height}
-              className='overflow-hidden rounded-full'
+              className='overflow-hidden w-full h-full rounded-full'
             />
           ) : (
             name ? (
@@ -39,6 +44,11 @@ const Avatar = ({userId,name,imageUrl,width,height}) => {
           )
         }
         
+        {
+          isOnline && (
+            <div className='bg-green-600 p-1 absolute bottom-2 -right-1 z-10 rounded-full'></div>
+          )
+        }
     </div>
   )
 }
